@@ -2,17 +2,16 @@
 <html>
 <head>
 	<title>sign in</title>
-<!-- 	<link rel="stylesheet" href="{{url_for('static', filename='css/apply.css')}}">-->  
-<link rel="stylesheet" type="text/css" href="apply.css">
+ 	<link rel="stylesheet" href="{{url_for('static', filename='css/apply.css')}}">  
 </head>
  
-<body>
+<body>S
 
 <h1>Apply for a surgery</h1>
 <h2>*Patient information:*</h2>
      <a href="{{url_for('LogOut')}}"> <button class="b4"   type="button"  >Log Out   </button> </a>
 
-<form class="f1"  action="http://127.0.0.1:9000/applyforsurgery" method="POST">
+<form class="f1"  action="{{url_for('applyforsurgery')}}" method="POST">
 	<div class="A">
    Name: <input  class="B" type="text" name="name" ><br>
   <!-- </div>
@@ -48,7 +47,9 @@ Doctor ID: <input  class="D" type="number"  name="d_id" ><br>
 
 <div class="x">
  -->
+ Patient Scans : <input  class="K" type="text"  name="Scans" ><br>
  Urgency: <input  class="J" type="text"  name="urgency" ><br>
+
 </div>
 
   <input class="Z" type="submit" value="Submit">

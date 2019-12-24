@@ -186,6 +186,20 @@ color:darkcyan;
   cursor: pointer;
   border-radius: 10px;
 }
+.K{
+  transform: translate(29%); 
+  background-color:lightsteelblue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
 
 .Z{
 

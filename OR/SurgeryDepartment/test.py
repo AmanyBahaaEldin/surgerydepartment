@@ -67,6 +67,9 @@ def deletedoctor():
 @app.route('/head')
 def head():
 	return render_template('index.html')
+@app.route('/doctor')
+def doctor():
+	return render_template('doctors.html')
 
 @app.route('/viewsurgeons',methods = ['POST', 'GET'])
 def viewsurgeons():
@@ -94,7 +97,7 @@ def applyforsurgery():
 		SD=request.form['surgery_date']
 		ST=request.form['surgery_time']
 		urgency=request.form['urgency']
-		sql = "INSERT INTO Patients(name, P_id ,d_id ,age,gender,visit_date,surgery_date,surgery_time,urgency) VALUES (%s,%s,%s, %s ,%s ,%s,%s, %s ,%s )"
+		sql = "INSERT INTO patient(name, P_id ,d_id ,age,gender,visit_date,surgery_date,surgery_time,urgency) VALUES (%s,%s,%s, %s ,%s ,%s,%s, %s ,%s )"
 		val = (name,pid,Did,age,gender,VD,SD,ST,urgency)
 		mycursor.execute(sql, val)
 		mydb.commit() 
@@ -111,7 +114,7 @@ def patientinfo():
 	if request.method == 'POST': 
 		id=request.form['d_id']
 		# print(id)
-		mycursor.execute( "SELECT * FROM Patients WHERE D_id= '" +id+ "' ")
+		mycursor.execute( "SELECT * FROM patient WHERE D_id= '" +id+ "' ")
 		row_headers=[x[0] for x in mycursor.description] 
 		myresult = mycursor.fetchall()
 		data={
@@ -147,11 +150,11 @@ def findrooms():
       return render_template('findroom.html')
 
 
-@app.route('/statistics') 
-def statisics():
-	mycursor.execute("SELECT COUNT(Result) FROM Patients WHERE Result=1")
+@app.route('/statistic') 
+def statisic():
+	mycursor.execute("SELECT COUNT(Results) FROM patient WHERE Results=1")
 	count=mycursor.fetchone()
-	mycursor.execute("SELECT COUNT(Result) FROM Patients ")
+	mycursor.execute("SELECT COUNT(Results) FROM patient ")
 	count1=mycursor.fetchone()
 	return render_template('statistics.html' ,message="surgerical statisics: "+str(count)+"sucess surgeries of "+str(count1))		
 
@@ -159,5 +162,9 @@ def statisics():
 # mycursor.execute("SELECT surgery_date,surgery_time From Patients WHERE surgery_date=%s AND surgery_time=%s ",(id1,))
 # myresult = mycursor.fetchall()
 
+@app.route('/LogOut')
+def LogOut():
+	return render_template('/home.html')
+
 if __name__ == '__main__':
-	app.run(debug=True , port=9000)
+	app.run(debug=True , port=7000)

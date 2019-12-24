@@ -3,8 +3,7 @@
 
 	<head>
   		 <title>Delete a doctor from Database </title>
-<!--   		  <link rel="stylesheet" href="{{url_for('static', filename='css/deletedoctor.css')}}">-->
-<link rel="stylesheet" type="text/css" href="deletedoctor.css">        
+   		  <link rel="stylesheet" href="{{url_for('static', filename='css/deletedoctor.css')}}">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,7 +20,7 @@
      <a href="{{url_for('LogOut')}}"> <button class="b5"   type="button"  >Log Out   </button> </a>
 
     
-      <form action="http://127.0.0.1:9000/deletedoctor" method="POST">
+      <form action="{{url_for('deletedoctor')}}" method="POST">
         <div class="A">
         Doctor ID: <input  class="B" type="ID" name="D_id" >
         </div>
